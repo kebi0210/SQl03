@@ -60,7 +60,14 @@ select em.department_id,
 --//2명
 
 --답      
- 
+ select em.employee_id,
+       first_name || last_name
+from employees em,
+     job_history j,
+     jobs jo
+where em.employee_id = j.employee_id
+      and jo.job_id = j.job_id
+      and jo.job_title like 'Public Accountant';
  
 --문제5.
 --직원들의 사번(employee_id), 이름(firt_name), 성(last_name)과 부서 이름을 조회하여
@@ -68,8 +75,24 @@ select em.department_id,
 --//106명
 
 --답      
-   
+ select em.department_id,
+       first_name,
+       last_name,
+       de.department_id,
+       department_name
+ from employees em,
+      departments de
+ where em.department_id = de.department_id     
+ order by last_name asc;      
       
 --문제6.
 --자신의 매니저보다 채용일(hire_date)이 빠른 사원의 사번(employee_id), 성(last_name)과
 --채용일(hire_date)을 조회하세요
+
+--답
+select em.employee_id,
+       em.last_name,
+       em.hire_date
+from employees em, employees e
+where e.manager_id = em.employee_id
+      and e.hire_date < em.hire_date;
