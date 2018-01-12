@@ -37,7 +37,21 @@ order by region_name desc;
 --//11개
 
 --답
-
+select em.department_id,
+          department_name,
+          city,
+          country_name,
+          region_name
+   from employees em,
+        departments de,
+        locations lo,
+        countries co,
+        regions re 
+   where em.employee_id = de.manager_id
+         and de.location_id = lo.location_id
+         and lo.country_id = co.country_id
+         and co.region_id = re.region_id;  
+      
 
 --문제4.
 --‘Public Accountant’의 직책(job_title)으로 과거에 근무한 적이 있는 모든 사원의 사번과
@@ -46,8 +60,8 @@ order by region_name desc;
 --//2명
 
 --답      
-   
-      
+ 
+ 
 --문제5.
 --직원들의 사번(employee_id), 이름(firt_name), 성(last_name)과 부서 이름을 조회하여
 --성(last_name)순서로 오름차순 정렬하세요
