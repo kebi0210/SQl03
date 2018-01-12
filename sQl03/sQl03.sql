@@ -20,8 +20,15 @@ where emp.manager_id = ma.employee_id
 --//25개국
 
  --답     
+select region_name,
+       re.region_id,
+       country_name,
+       reg.region_id
+from regions re, countries reg
+where re.region_id = reg.region_id
+order by region_name desc; 
+  
 
-      
 --문제3.
 --각 부서(department)에 대해서 부서번호(department_id), 부서이름(department_name),
 --매니저(manager)의 이름(first_name), 위치(locations)한 도시(city), 나라(countries)의
